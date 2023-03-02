@@ -241,8 +241,8 @@ class WorkOrdersController extends HomeController
                 }
                 $transaction->commit();
                 
-                // return $this->redirect(['index']);
-                return $this->redirect(['view', 'id' => $model->id, 'print' => 1]);
+                $workOrderLastInserted = WorkOrders::find()->orderBy('createdtime DESC')->one();
+                return $this->redirect(['view', 'id' => $workOrderLastInserted->id, 'print' => 1]);
             } catch(Exception $e) {
                 $transaction->rollBack();
                 throw $e;
@@ -479,7 +479,7 @@ class WorkOrdersController extends HomeController
                                 ->andWhere(['!=', 'spareparts.is_deleted', '1'])
                                 ->andWhere(['!=', 'sparepart_id', ''])
                                 ->all();
-        $pdf = new Mpdf(['margin_top' => 73, 'margin-left' => 0, 'margin-right' => 0, 'tempDir' => sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'format' => [210, 140], 'setAutoTopMargin' => false]);
+        $pdf = new Mpdf(['margin_top' => 72, 'margin-left' => 0, 'margin-right' => 0, 'tempDir' => sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'format' => [210, 140], 'setAutoTopMargin' => false]);
         $pdf->imageVars['logord25'] = file_get_contents(Yii::getAlias('@webroot') . '/' . $modelGeneral->value);
         $pdf->SetHTMLHeader('
             <table class="TableGrid">
