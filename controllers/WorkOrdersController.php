@@ -84,6 +84,9 @@ class WorkOrdersController extends HomeController
                                 ->andWhere(['!=', 'spareparts.is_deleted', '1'])
                                 ->andWhere(['!=', 'sparepart_id', ''])
                                 ->all();
+        if (count($modelDetailSparepart) < 1) {
+            $modelDetailSparepart = [new WorkOrderDetailsSparepart];
+        }
         $modelCustomer = Customers::find()
                         ->select(['customers.*', 'categories.name as category_name'])
                         ->innerJoin('categories', '`categories`.`id` = `customers`.`category_id`')
@@ -149,7 +152,7 @@ class WorkOrdersController extends HomeController
 
                     if ($model->save()) {
                         $workOrderLastInserted = WorkOrders::find()->orderBy('createdtime DESC')->one();
-                        $workOrderDetails = array_merge($this->request->post('WorkOrderDetailsService'), $this->request->post('WorkOrderDetailsSparepart'));
+                        $workOrderDetails = array_merge($this->request->post('WorkOrderDetailsService'), ($this->request->post('WorkOrderDetailsSparepart') == null ? [] : $this->request->post('WorkOrderDetailsSparepart')));
 
                         foreach ($workOrderDetails as $row) {
 
@@ -278,6 +281,9 @@ class WorkOrdersController extends HomeController
                                 ->where(['work_order_id' => $id])
                                 ->andWhere(['!=', 'sparepart_id', ''])
                                 ->all();
+        if (count($modelDetailSparepart) < 1) {
+            $modelDetailSparepart = [new WorkOrderDetailsSparepart];
+        }
         $modelCustomer = Customers::find()->where(['id' => $model->customer_id])->one();
         $categories = ArrayHelper::map(Categories::find()->where(['is_deleted' => 0])->all(), 'id', 'name');
         $services = ArrayHelper::map(Services::find()->where(['is_deleted' => 0])->all(), 'id', 'name');
@@ -303,7 +309,7 @@ class WorkOrdersController extends HomeController
                         // delete all work order details
                         $workOrderDetailsDelete = WorkOrderDetails::deleteAll(['work_order_id' => $model->id]);
 
-                        $workOrderDetails = array_merge($this->request->post('WorkOrderDetailsService'), $this->request->post('WorkOrderDetailsSparepart'));
+                        $workOrderDetails = array_merge($this->request->post('WorkOrderDetailsService'), ($this->request->post('WorkOrderDetailsSparepart') == null ? [] : $this->request->post('WorkOrderDetailsSparepart')));
                         foreach ($workOrderDetails as $row) {
 
                             if (!empty($row['sparepart_id'])) {

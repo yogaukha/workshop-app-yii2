@@ -145,6 +145,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Lihat PKB'];
             </div>
         </div>
 
+        <?php // if (strlen($modelDetailSparepart[0]->attributes['id']) > 0): ?>
         <div class="card card-default">
             <div class="card-header"><b>Jasa Sparepart</b></div>
             <div class="card-body">
@@ -218,6 +219,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Lihat PKB'];
                 </div>
             </div>
         </div>
+        <?php // endif; ?>
         
         <div class="card card-default">
             <div class="card-footer">

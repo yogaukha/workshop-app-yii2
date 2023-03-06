@@ -156,6 +156,7 @@ use yii\helpers\Html;
                 </td>
             </tr>
         </table>
+        <?php if (count($modelDetailSparepart) > 0): ?>
         <div class="page-break"></div>
         <table class="TableGrid" style="width: 100%; margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 11px;">
             <tr>
@@ -200,13 +201,14 @@ use yii\helpers\Html;
             </tr>
             <?php $i++; endforeach; ?>
         </table>
+        <?php endif; ?>
         <div class="page-break"></div>
         <table class="TableGrid" style="margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 11px;">
             <tr>
                 <td colspan="4" style="text-align: right"><b>TOTAL PERBAIKAN : </b></td>
                 <td style="text-align: right"><?= number_format($model->total_service, 0, ',', '.') ?></td>
             </tr>
-            <?php if (is_array($modelDetailSparepart)): ?>
+            <?php if (count($modelDetailSparepart) > 0): ?>
             <tr>
                 <td colspan="4" style="text-align: right"><b>TOTAL SPAREPART : </b></td>
                 <td style="text-align: right"><?= number_format($model->total_sparepart, 0, ',', '.') ?></td>

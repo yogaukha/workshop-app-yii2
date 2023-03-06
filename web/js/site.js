@@ -87,7 +87,7 @@ $(document).ready(function () {
     });
     $('#workorders-total_service').val(totalService);
     var totalSparepart = $('#workorders-total_sparepart').val();
-    totalSparepart = typeof totalSparepart == 'undefined' ? 0 : parseInt(totalSparepart);
+    totalSparepart = (typeof totalSparepart == 'undefined' || totalSparepart == '') ? 0 : parseInt(totalSparepart);
     $('#workorders-grand_total').val(parseInt(totalService) + totalSparepart);
   });
 
