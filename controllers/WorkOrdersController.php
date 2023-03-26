@@ -485,15 +485,15 @@ class WorkOrdersController extends HomeController
                                 ->andWhere(['!=', 'spareparts.is_deleted', '1'])
                                 ->andWhere(['!=', 'sparepart_id', ''])
                                 ->all();
-        $pdf = new Mpdf(['margin_top' => 72, 'margin-left' => 0, 'margin-right' => 0, 'tempDir' => sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'format' => [210, 140], 'setAutoTopMargin' => false]);
+        $pdf = new Mpdf(['margin_top' => 75, 'margin-left' => 0, 'margin-right' => 0, 'tempDir' => sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'format' => [210, 140], 'setAutoTopMargin' => false]);
         $pdf->imageVars['logord25'] = file_get_contents(Yii::getAlias('@webroot') . '/' . $modelGeneral->value);
         $pdf->SetHTMLHeader('
             <table class="TableGrid">
             <tr>
-                <td style="width: 71%">
-                    ' . Html::img('var:logord25', ['width' => '2.5cm']) . '
+                <td style="width: 65%">
+                    ' . Html::img('var:logord25', ['width' => '3cm']) . '
                 </td>
-                <td style="font-size: 10px;">
+                <td style="font-size: 12px;">
                     Bengkel Cat Solo RD-25 AUTO BODY
                     <br>
                     9QHR+4PQ, Pd. III, Pondok, Kec. Grogol, Kabupaten Sukoharjo, Jawa Tengah 57552
@@ -505,20 +505,20 @@ class WorkOrdersController extends HomeController
             <hr>
             <table class="TableGrid">
             <tr>
-                <td style="font-size: 12px;">
+                <td style="font-size: 14px;">
                     <center>
                         <b>PERINTAH KERJA BENGKEL</b>
                         <br>
-                        <div style="font-size: 14px;">NO. <b style="font-size: 14px;">' . $model->number . '</b></div>
+                        <div style="font-size: 16px;">NO. <b style="font-size: 16px;">' . $model->number . '</b></div>
                         Status : ' . $model->status . '
                     </center>
                 </td>
             </tr>
             </table>
             <hr>
-            <table class="TableGrid" style="margin-left: 150px; margin-right: auto; font-size: 10px;">
+            <table class="TableGrid" style="margin-left: 130px; margin-right: auto; font-size: 12px;">
             <tr>
-                <td width="15%">
+                <td width="18%">
                     No. Polisi
                 </td>
                 <td width="2%">
@@ -527,7 +527,7 @@ class WorkOrdersController extends HomeController
                 <td width="29%">
                     ' . $modelCustomer->license_plate . '
                 </td>
-                <td width="15%">
+                <td width="18%">
                     Tanggal Masuk
                 </td>
                 <td width="2%">
@@ -538,7 +538,7 @@ class WorkOrdersController extends HomeController
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td width="18%">
                     Merk / Tipe
                 </td>
                 <td width="2%">
@@ -547,7 +547,7 @@ class WorkOrdersController extends HomeController
                 <td width="29%">
                     ' . $modelCustomer->brand . ' / ' . $modelCustomer->type . '
                 </td>
-                <td width="15%">
+                <td width="18%">
                     Tanggal Keluar
                 </td>
                 <td width="2%">
@@ -558,7 +558,7 @@ class WorkOrdersController extends HomeController
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td width="18%">
                     Warna
                 </td>
                 <td width="2%">
@@ -567,7 +567,7 @@ class WorkOrdersController extends HomeController
                 <td width="29%">
                     ' . $modelCustomer->color . '
                 </td>
-                <td width="15%">
+                <td width="18%">
                     Nama Customer
                 </td>
                 <td width="2%">
@@ -578,7 +578,7 @@ class WorkOrdersController extends HomeController
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td width="18%">
                     Tahun
                 </td>
                 <td width="2%">
@@ -587,7 +587,7 @@ class WorkOrdersController extends HomeController
                 <td width="29%">
                     ' . $modelCustomer->year . '
                 </td>
-                <td width="15%">
+                <td width="18%">
                     No. Telp
                 </td>
                 <td width="2%">
@@ -598,7 +598,7 @@ class WorkOrdersController extends HomeController
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td width="18%">
                     Nomor Rangka
                 </td>
                 <td width="2%">
@@ -607,7 +607,7 @@ class WorkOrdersController extends HomeController
                 <td width="29%">
                     ' . $modelCustomer->vehicle_identification_number . '
                 </td>
-                <td width="15%">
+                <td width="18%">
                     Email
                 </td>
                 <td width="2%">
@@ -618,7 +618,7 @@ class WorkOrdersController extends HomeController
                 </td>
             </tr>
             <tr>
-                <td width="15%" style="vertical-align: top;">
+                <td width="18%" style="vertical-align: top;">
                     Nomor Mesin
                 </td>
                 <td width="2%" style="vertical-align: top;">
@@ -627,7 +627,7 @@ class WorkOrdersController extends HomeController
                 <td width="29%" style="vertical-align: top;">
                     ' . $modelCustomer->engine_number . '
                 </td>
-                <td width="15%" style="vertical-align: top;">
+                <td width="18%" style="vertical-align: top;">
                     Alamat
                 </td>
                 <td width="2%" style="vertical-align: top;">
