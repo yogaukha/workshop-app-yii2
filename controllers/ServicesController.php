@@ -72,7 +72,7 @@ class ServicesController extends HomeController
     public function actionCreate()
     {
         $model = new Services();
-        $modelCategory = Categories::find()->all();
+        $modelCategory = Categories::find()->where(['is_deleted' => 0])->all();
         $modelServicePrices = new ServicePrices();
 
         if ($this->request->isPost) {
@@ -123,7 +123,7 @@ class ServicesController extends HomeController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $modelCategory = Categories::find()->all();
+        $modelCategory = Categories::find()->where(['is_deleted' => 0])->all();
         $modelServicePrices = ServicePrices::find()->where(['service_id' => $id, 'is_deleted' => 0])->all();
         
         if ($this->request->isPost) {
