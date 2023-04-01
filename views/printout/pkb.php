@@ -108,6 +108,157 @@ use yii\helpers\Html;
 
 <body>
     <div class="main-content">
+        <table class="TableGrid">
+            <tr>
+                <td style="width: 62%">
+                    <?= Html::img('var:logord25', ['width' => '3cm']) ?>
+                </td>
+                <td style="font-size: 11px;">
+                    BENGKEL CAT SOLO RD-25 AUTO BODY
+                    <br>
+                    9QHR+4PQ, PD. III, PONDOK, KEC. GROGOL, KABUPATEN SUKOHARJO, JAWA TENGAH 57552
+                    <br>
+                    TELP. 0815-7816-8823
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table class="TableGrid">
+            <tr>
+                <td style="font-size: 14px;">
+                    <center>
+                        <b>PERINTAH KERJA BENGKEL</b>
+                        <br>
+                        <div style="font-size: 16px;">NO. <b style="font-size: 16px;"><?= $model->number ?></b></div>
+                        STATUS : <?= strtoupper($model->status) ?>
+                    </center>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <table class="TableGrid" style="margin-left: 84px; margin-right: auto; font-size: 13px;">
+            <tr>
+                <td width="20%">
+                    NO. POLISI
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="38%">
+                    <?= $modelCustomer->license_plate ?>
+                </td>
+                <td width="22%">
+                    TANGGAL MASUK
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="46%">
+                    <?= date('d-m-Y', strtotime($model->entry_date)) ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%">
+                    MERK / TIPE
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="38%">
+                    <?= strtoupper($modelCustomer->brand) ?> / <?= strtoupper($modelCustomer->type) ?>
+                </td>
+                <td width="22%">
+                    TANGGAL KELUAR
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="46%">
+                    <?= date('d-m-Y', strtotime($model->completion_date)) ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%">
+                    WARNA
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="38%">
+                    <?= strtoupper($modelCustomer->color) ?>
+                </td>
+                <td width="22%">
+                    NAMA CUSTOMER
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="46%">
+                    <?= strtoupper($modelCustomer->name) ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%">
+                    TAHUN
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="38%">
+                    <?= strtoupper($modelCustomer->year) ?>
+                </td>
+                <td width="22%">
+                    NO. TELP
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="46%">
+                    <?= strtoupper($modelCustomer->phone_number) ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%">
+                    NOMOR RANGKA
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="38%">
+                    <?= strtoupper($modelCustomer->vehicle_identification_number) ?>
+                </td>
+                <td width="22%">
+                    EMAIL
+                </td>
+                <td width="2%">
+                    :
+                </td>
+                <td width="46%">
+                    <?= strtoupper($modelCustomer->email) ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%" style="vertical-align: top;">
+                    NOMOR MESIN
+                </td>
+                <td width="2%" style="vertical-align: top;">
+                    :
+                </td>
+                <td width="38%" style="vertical-align: top;">
+                    <?= strtoupper($modelCustomer->engine_number) ?>
+                </td>
+                <td width="22%" style="vertical-align: top;">
+                    ALAMAT
+                </td>
+                <td width="2%" style="vertical-align: top;">
+                    :
+                </td>
+                <td width="46%" style="vertical-align: top;">
+                    <?= strtoupper($modelCustomer->address) ?>
+                </td>
+            </tr>
+        </table>
+        <hr>
         <table class="TableGrid" style="width: 100%; margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 12px;">
             <tr>
                 <td width="100%" colspan="5">
@@ -116,19 +267,19 @@ use yii\helpers\Html;
             </tr>
             <tr>
                 <td width="5%" style="font-weight: bold">
-                    No.
+                    NO.
                 </td>
                 <td width="56%" style="font-weight: bold">
-                    Nama
+                    NAMA
                 </td>
                 <td width="13%" style="font-weight: bold">
-                    Harga
+                    HARGA
                 </td>
                 <td width="13%" style="font-weight: bold">
-                    Diskon
+                    DISKON
                 </td>
                 <td width="13%" style="font-weight: bold">
-                    Subtotal
+                    SUBTOTAL
                 </td>
             </tr>
             <?php $i = 1; foreach($modelDetailService as $rowService): ?>
@@ -137,7 +288,7 @@ use yii\helpers\Html;
                     <?= $i ?>
                 </td>
                 <td style="text-align: left">
-                    <?= $rowService->service_name ?>
+                    <?= strtoupper($rowService->service_name) ?>
                 </td>
                 <td style="text-align: right">
                     <?= number_format($rowService->manual_price, 0, ',', '.') ?>
@@ -150,35 +301,31 @@ use yii\helpers\Html;
                 </td>
             </tr>
             <?php $i++; endforeach; ?>
-            <tr>
-                <td colspan="5">
-                    <p>&nbsp;</p>
-                </td>
-            </tr>
         </table>
+        <br>
         <?php if (count($modelDetailSparepart) > 0): ?>
-        <div class="page-break"></div>
+        <!-- <div class="page-break"></div> -->
         <table class="TableGrid" style="width: 100%; margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 12px;">
             <tr>
                 <td width="100%" colspan="5">
-                    <p><b>JASA SPAREPART</b></p>
+                    <p><b>SPAREPART</b></p>
                 </td>
             </tr>
             <tr>
                 <td width="5%" style="font-weight: bold">
-                    No.
+                    NO.
                 </td>
                 <td width="56%" style="font-weight: bold">
-                    Nama
+                    NAMA
                 </td>
                 <td width="13%" style="font-weight: bold">
-                    Harga
+                    HARGA
                 </td>
                 <td width="13%" style="font-weight: bold">
-                    Diskon
+                    DISKON
                 </td>
                 <td width="13%" style="font-weight: bold">
-                    Subtotal
+                    SUBTOTAL
                 </td>
             </tr>
             <?php $i = 1; foreach($modelDetailSparepart as $rowSparepart): ?>
@@ -187,7 +334,7 @@ use yii\helpers\Html;
                     <?= $i ?>
                 </td>
                 <td style="text-align: left">
-                    <?= $rowSparepart->sparepart_name ?>
+                    <?= strtoupper($rowSparepart->sparepart_name) ?>
                 </td>
                 <td style="text-align: right">
                     <?= number_format($rowSparepart->manual_price, 0, ',', '.') ?>
@@ -224,10 +371,10 @@ use yii\helpers\Html;
         <table class="TableGrid" style="font-size: 12px;">
             <tr>
                 <td style="text-align: center; width: 50%">
-                    Service Advisor
+                    SERVICE ADVISOR
                 </td>
                 <td style="text-align: center; width: 50%">
-                    Pelanggan
+                    PELANGGAN
                 </td>
             </tr>
             <tr>
@@ -248,11 +395,11 @@ use yii\helpers\Html;
             <tr>
                 <td style="text-align: center; width: 50%; font-size: 12px;">
                     <hr style="width: 40%;margin-left: auto;margin-right: auto; margin-bottom: 3px;">
-                    <?= $modelUser->name ?>
+                    <?= strtoupper($modelUser->name) ?>
                 </td>
                 <td style="text-align: center; width: 50%; font-size: 12px;">
                     <hr style="width: 40%;margin-left: auto;margin-right: auto; margin-bottom: 3px;">
-                    <?= $modelCustomer->name ?>
+                    <?= strtoupper($modelCustomer->name) ?>
                 </td>
             </tr>
         </table>

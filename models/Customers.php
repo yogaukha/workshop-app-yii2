@@ -45,7 +45,7 @@ class Customers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'license_plate', 'name', 'address', 'phone_number', 'email', 'brand', 'type', 'color', 'year', 'kilometre'], 'required', 'message' => 'Wajib diisi'],
+            [['category_id', 'license_plate', 'name', 'address', 'phone_number', 'brand', 'type', 'color', 'year', 'kilometre'], 'required', 'message' => 'Wajib diisi'],
             [['address'], 'string'],
             [['kilometre', 'is_deleted'], 'integer'],
             [['createdtime', 'updatedtime'], 'safe'],

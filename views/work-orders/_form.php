@@ -21,7 +21,9 @@ use kartik\select2\Select2
             <?= $form->field($model, 'status')->textInput(['maxlength' => true, 'readonly' => true]) ?>
         </div>
         <div class="col-6">
-            <?= $form->field($model, 'entry_date')->textInput(['readonly' => true]) ?>
+            <?= $form->field($model, 'entry_date')->widget(DatePicker::classname(), [
+                'dateFormat' => 'dd-MM-yyyy'
+            ]) ?>
             <?= $form->field($model, 'completion_date')->widget(DatePicker::classname(), [
                 'dateFormat' => 'dd-MM-yyyy'
             ]) ?>
@@ -142,7 +144,7 @@ use kartik\select2\Select2
     </div>
 
     <div class="card card-default">
-        <div class="card-header"><b>Jasa Sparepart</b></div>
+        <div class="card-header"><b>Sparepart</b></div>
         <div class="card-body">
             <?php DynamicFormWidget::begin([
                 'widgetContainer' => 'dynamicform_wrapper_sparepart', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]

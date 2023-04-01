@@ -16,6 +16,7 @@ $(document).ready(function () {
     $("#image-wrapper-general").hide();
   }
   $("input[name='Generals[type]']").prop('disabled', true);
+  $("#workorders-entry_date").addClass('form-control');
   $("#workorders-completion_date").addClass('form-control');
 
   $('#dynamic-form').on('click', '.select2', function(event) {
