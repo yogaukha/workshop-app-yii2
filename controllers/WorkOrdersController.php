@@ -485,7 +485,7 @@ class WorkOrdersController extends HomeController
                                 ->andWhere(['!=', 'spareparts.is_deleted', '1'])
                                 ->andWhere(['!=', 'sparepart_id', ''])
                                 ->all();
-        $pdf = new Mpdf(['margin_top' => 5, 'margin-left' => 0, 'margin-right' => 0, 'tempDir' => sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'format' => [210, 140], 'setAutoTopMargin' => false]);
+        $pdf = new Mpdf(['margin_top' => 15, 'margin-left' => 0, 'margin-right' => 0, 'margin-bottom' => 0, 'tempDir' => sys_get_temp_dir().DIRECTORY_SEPARATOR.'mpdf', 'format' => [210, 140], 'setAutoTopMargin' => false]);
         $pdf->imageVars['logord25'] = file_get_contents(Yii::getAlias('@webroot') . '/' . $modelGeneral->value);
         // $pdf->SetHTMLHeader('
             
