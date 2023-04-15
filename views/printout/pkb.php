@@ -259,7 +259,7 @@ use yii\helpers\Html;
             </tr>
         </table>
         <hr>
-        <table class="TableGrid" style="width: 100%; margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 12px;">
+        <table class="TableGrid" style="width: 100%; margin-top: 4px;margin-left: 100px; margin-right: 80px; font-size: 12px;">
             <tr>
                 <td width="100%" colspan="5">
                     <p><b>JASA PERBAIKAN</b></p>
@@ -349,7 +349,7 @@ use yii\helpers\Html;
             <?php $i++; endforeach; ?>
         </table>
         <?php endif; ?>
-        <div class="page-break"></div>
+        <br>
         <table class="TableGrid" style="margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 12px;">
             <tr>
                 <td colspan="4" style="text-align: right"><b>TOTAL PERBAIKAN : </b></td>
