@@ -350,6 +350,8 @@ use yii\helpers\Html;
         </table>
         <?php endif; ?>
         <br>
+        <br>
+        <br>
         <table class="TableGrid" style="margin-top: 0px;margin-left: 100px; margin-right: 80px; font-size: 12px;">
             <tr>
                 <td colspan="4" style="text-align: right"><b>TOTAL PERBAIKAN : </b></td>
